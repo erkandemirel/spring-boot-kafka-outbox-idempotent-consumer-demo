@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: order-service
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5435/orders}
+    username: ${DB_USERNAME:orders}
+    password: ${DB_PASSWORD:orders}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9094}
+
+outbox:
+  publisher:
+    fixed-delay: ${OUTBOX_PUBLISHER_DELAY:2000}
